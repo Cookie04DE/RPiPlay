@@ -19,6 +19,7 @@ target_link_libraries( airplay
 
 if( UNIX AND NOT APPLE )
   find_package(OpenSSL 1.1.1 REQUIRED)
+  target_compile_definitions(airplay PUBLIC OPENSSL_API_COMPAT=0x10101000L)
   target_link_libraries( airplay OpenSSL::Crypto )
   target_link_libraries( airplay dns_sd )
 else()
